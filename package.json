@@ -1,10 +1,9 @@
 {
-  "name": "@mosteast/xxx",
-  "description": "xxx",
+  "name": "@mosteast/print_helper",
+  "description": "Print with color",
   "version": "0.1.0",
-  "homepage": "https://github.com/xxx/xxx#readme",
-  "repository": "github:xxx/xxx",
-  "types": "build/xxx.d.ts",
+  "homepage": "https://github.com/mosteast/print_helper",
+  "repository": "github:mosteast/print_helper",
   "main": "build/index.js",
   "type": "build/index.d.ts",
   "files": [
