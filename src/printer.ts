@@ -1,4 +1,5 @@
 import * as chalk from 'chalk'
+import { E } from '@mosteast/e'
 
 export function print(type: N_print_type, ...args: any[]) {
   const arr = []
@@ -20,6 +21,10 @@ export function print(type: N_print_type, ...args: any[]) {
 
   for (let it of args) {
     if (typeof it === 'object') {
+      if (it instanceof E && it.solution) {
+        arr.push(it.message, ' [Solution]:', it.solution, '\n')
+      }
+
       arr.push(it)
     } else {
       arr.push(chalk[color_map[type]](it))
