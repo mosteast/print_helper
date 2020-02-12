@@ -4,7 +4,7 @@ import {
   print_success,
   print_verbose,
   print_warn,
-  print,
+  printer,
 } from './printer'
 import { E } from '@mosteast/e'
 
@@ -34,8 +34,8 @@ it('print_pretty', async () => {
 
 it('dynamic access', async () => {
   const val = { a: { b: { c: [ 1, 2, 3 ] } } }
-  for (let key in print) {
-    print[key](val)
+  for (let key in printer) {
+    printer[key](val)
   }
 })
 

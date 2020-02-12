@@ -38,7 +38,7 @@ export function log_print(type: N_print_type, ...args: any[]) {
 /**
  * Key value mapped printers, for dynamic access: `print[xxx]`
  */
-export const print: T_print_map = {
+export const printer: T_printer_map = {
   verbose: print_verbose,
   success: print_success,
   info: print_info,
@@ -108,6 +108,6 @@ export interface T_opt_print_pretty {
   opt_render?: RendererOptions
 }
 
-export interface T_print_map {
+export interface T_printer_map {
   [key: string]: Function
 }
