@@ -1,5 +1,5 @@
 export {
-  print,
+  log_print,
   print_warn,
   print_error,
   print_verbose,

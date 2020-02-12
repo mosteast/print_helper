@@ -2,7 +2,7 @@ import * as chalk from 'chalk'
 import { E } from '@mosteast/e'
 import { render, RendererOptions } from 'prettyjson'
 
-export function print(type: N_print_type, ...args: any[]) {
+export function log_print(type: N_print_type, ...args: any[]) {
   const arr = []
   const color_map = {
     verbose: 'gray',
@@ -35,34 +35,47 @@ export function print(type: N_print_type, ...args: any[]) {
   console[console_map[type]](...arr)
 }
 
+/**
+ * Key value mapped printers, for dynamic access: `print[xxx]`
+ */
+export const print: T_print_map = {
+  verbose: print_verbose,
+  success: print_success,
+  info: print_info,
+  warn: print_warn,
+  error: print_error,
+  json: print_json,
+  pretty: print_pretty,
+}
+
 export function print_verbose(...args: any[]) {
-  print(N_print_type.verbose, ...args)
+  log_print(N_print_type.verbose, ...args)
 }
 
 export function print_success(...args: any[]) {
-  print(N_print_type.success, ...args)
+  log_print(N_print_type.success, ...args)
 }
 
 export function print_info(...args: any[]) {
-  print(N_print_type.info, ...args)
+  log_print(N_print_type.info, ...args)
 }
 
 export function print_warn(...args: any[]) {
-  print(N_print_type.warn, ...args)
+  log_print(N_print_type.warn, ...args)
 }
 
 export function print_error(...args: any[]) {
-  print(N_print_type.error, ...args)
+  log_print(N_print_type.error, ...args)
 }
 
 /**
  * Print full json
  */
 export function print_json(value: any, opt?: T_opt_print_json) {
-  let { space, replacer } = { ...opt }
+  let { space, replacer, raw } = { raw: false, ...opt }
 
   if ( ! space && ! replacer) {
-    if (Array.isArray(value)) {
+    if (Array.isArray(value) || raw) {
       space = 0
     } else {
       space = 2
@@ -88,8 +101,13 @@ export enum N_print_type {
 export interface T_opt_print_json {
   replacer?: (this: any, key: string, value: any) => any
   space?: string | number
+  raw?: boolean
 }
 
 export interface T_opt_print_pretty {
   opt_render?: RendererOptions
+}
+
+export interface T_print_map {
+  [key: string]: Function
 }
