@@ -1,7 +1,7 @@
 {
   "name": "@mosteast/print_helper",
   "description": "Print with colors",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://github.com/mosteast/print_helper",
   "repository": "github:mosteast/print_helper",
   "main": "build/index.js",
